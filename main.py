@@ -22,9 +22,9 @@ while (True):
     walletPath = browser.find_element_by_xpath("//*[@id=\"money\"]").text
     walletStr = walletPath[1:]
     wallet = int(float(walletStr))
-    toSpend = wallet / 2
-    if wallet == target:
-        break
+    toSpend = wallet / 4
+    if wallet >= target:
+        exit()
     else:
         coin = browser.find_element_by_xpath("//*[@id=\"btnFlip\"]")
         coin.click()
@@ -36,8 +36,3 @@ while (True):
         time.sleep(0.1)
         browser.switch_to.alert.send_keys("T")
         browser.switch_to.alert.accept()
-
-def on_press(key):
-    stop_key = KeyCode(char='b') 
-    if key == stop_key: 
-        exit()
